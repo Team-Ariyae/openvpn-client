@@ -1,0 +1,68 @@
+plugins {
+    alias(libs.plugins.androidLibrary)
+    id 'maven-publish'
+}
+
+android {
+    namespace 'de.blinkt.openvpn'
+    compileSdk 34
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 34
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            java.srcDirs += 'src/main/java'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+        buildConfig true
+        aidl true
+    }
+
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation libs.localbroadcastmanager
+    implementation libs.appcompat
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.findByName('release')
+
+                groupId = 'com.github.mehrab832'
+                artifactId = 'openvpn-client'
+                version = "0.1.2"
+            }
+        }
+    }
+}

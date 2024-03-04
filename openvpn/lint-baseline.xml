@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.3.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.3.0)" variant="all" version="8.3.0">
+
+    <issue
+        id="MissingPermission"
+        message="Missing permissions required by ConnectivityManager.getAllNetworks: android.permission.ACCESS_NETWORK_STATE"
+        errorLine1="            Network[] networks = conn.getAllNetworks();"
+        errorLine2="                                 ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/NetworkUtils.java"
+            line="23"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Missing permissions required by ConnectivityManager.getNetworkInfo: android.permission.ACCESS_NETWORK_STATE"
+        errorLine1="                NetworkInfo ni = conn.getNetworkInfo(network);"
+        errorLine2="                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/NetworkUtils.java"
+            line="25"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Missing permissions required by ConnectivityManager.getLinkProperties: android.permission.ACCESS_NETWORK_STATE"
+        errorLine1="                LinkProperties li = conn.getLinkProperties(network);"
+        errorLine2="                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/NetworkUtils.java"
+            line="26"
+            column="37"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Missing permissions required by ConnectivityManager.getNetworkCapabilities: android.permission.ACCESS_NETWORK_STATE"
+        errorLine1="                NetworkCapabilities nc = conn.getNetworkCapabilities(network);"
+        errorLine2="                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/NetworkUtils.java"
+            line="28"
+            column="42"/>
+    </issue>
+
+    <issue
+        id="DiscouragedPrivateApi"
+        message="Reflective access to getInt$, which is not part of the public SDK and therefore likely to change in future Android releases"
+        errorLine1="            Method getInt = FileDescriptor.class.getDeclaredMethod(&quot;getInt$&quot;);"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/OpenVpnManagementThread.java"
+            line="234"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="DiscouragedPrivateApi"
+        message="Reflective access to setInt$, which is not part of the public SDK and therefore likely to change in future Android releases"
+        errorLine1="            setInt = FileDescriptor.class.getDeclaredMethod(&quot;setInt$&quot;, int.class);"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/OpenVpnManagementThread.java"
+            line="638"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="MutatingSharedPrefs"
+        message="Do not modify the set returned by `SharedPreferences.getStringSet()``"
+        errorLine1="        vlist.add(TEMPORARY_PROFILE_FILENAME);"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/ProfileManager.java"
+            line="175"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="SuspiciousIndentation"
+        message="Suspicious indentation: This is indented but is not nested under the previous expression (`if (TextUtils.isEmpt`...)"
+        errorLine1="            startVpnInternal(context, inlineConfig, sCountry, userName, pw);"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/OpenVpnApi.java"
+            line="25"
+            column="13"/>
+        <location
+            file="src/main/java/de/blinkt/openvpn/OpenVpnApi.java"
+            line="24"
+            column="9"
+            message="Previous statement here"/>
+    </issue>
+
+    <issue
+        id="QueryPermissionsNeeded"
+        message="Consider adding a `&lt;queries>` declaration to your manifest when calling this \&#xA;method; see https://g.co/dev/packagevisibility for details"
+        errorLine1="                packageManager.queryIntentActivities(configureExtAuth, 0);"
+        errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/ExtAuthHelper.java"
+            line="76"
+            column="32"/>
+    </issue>
+
+    <issue
+        id="QueryPermissionsNeeded"
+        message="Consider adding a `&lt;queries>` declaration to your manifest when calling this \&#xA;method; see https://g.co/dev/packagevisibility for details"
+        errorLine1="                packageManager.queryIntentServices(serviceExtAuth, 0);"
+        errorLine2="                               ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/ExtAuthHelper.java"
+            line="81"
+            column="32"/>
+    </issue>
+
+    <issue
+        id="QueryPermissionsNeeded"
+        message="Consider adding a `&lt;queries>` declaration to your manifest when calling this \&#xA;method; see https://g.co/dev/packagevisibility for details"
+        errorLine1="                pm.queryBroadcastReceivers(startOrbot, 0);"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/OrbotHelper.java"
+            line="125"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="UnspecifiedRegisterReceiverFlag"
+        message="`orbotStatusReceiver` \&#xA;is missing `RECEIVER_EXPORTED` or `RECEIVER_NOT_EXPORTED` flag for unprotected \&#xA;broadcasts registered for org.torproject.android.intent.action.STATUS"
+        errorLine1="            c.getApplicationContext().registerReceiver(orbotStatusReceiver,"
+        errorLine2="            ^">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/OrbotHelper.java"
+            line="141"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnsafeNativeCodeLocation"
+        message="Embedding non-shared library native executables into applications should be avoided when possible, as there is an increased risk that the executables could be tampered with after installation. Instead, native code should be placed in a shared library, and the features of the development environment should be used to place the shared library in the lib directory of the compiled APK.">
+        <location
+            file="src/main/assets/nopie_openvpn.arm64-v8a"/>
+    </issue>
+
+    <issue
+        id="UnsafeNativeCodeLocation"
+        message="Embedding non-shared library native executables into applications should be avoided when possible, as there is an increased risk that the executables could be tampered with after installation. Instead, native code should be placed in a shared library, and the features of the development environment should be used to place the shared library in the lib directory of the compiled APK.">
+        <location
+            file="src/main/assets/nopie_openvpn.armeabi-v7a"/>
+    </issue>
+
+    <issue
+        id="UnsafeNativeCodeLocation"
+        message="Embedding non-shared library native executables into applications should be avoided when possible, as there is an increased risk that the executables could be tampered with after installation. Instead, native code should be placed in a shared library, and the features of the development environment should be used to place the shared library in the lib directory of the compiled APK.">
+        <location
+            file="src/main/assets/nopie_openvpn.x86"/>
+    </issue>
+
+    <issue
+        id="UnsafeNativeCodeLocation"
+        message="Embedding non-shared library native executables into applications should be avoided when possible, as there is an increased risk that the executables could be tampered with after installation. Instead, native code should be placed in a shared library, and the features of the development environment should be used to place the shared library in the lib directory of the compiled APK.">
+        <location
+            file="src/main/assets/nopie_openvpn.x86_64"/>
+    </issue>
+
+    <issue
+        id="UnsafeNativeCodeLocation"
+        message="Embedding non-shared library native executables into applications should be avoided when possible, as there is an increased risk that the executables could be tampered with after installation. Instead, native code should be placed in a shared library, and the features of the development environment should be used to place the shared library in the lib directory of the compiled APK.">
+        <location
+            file="src/main/assets/pie_openvpn.arm64-v8a"/>
+    </issue>
+
+    <issue
+        id="UnsafeNativeCodeLocation"
+        message="Embedding non-shared library native executables into applications should be avoided when possible, as there is an increased risk that the executables could be tampered with after installation. Instead, native code should be placed in a shared library, and the features of the development environment should be used to place the shared library in the lib directory of the compiled APK.">
+        <location
+            file="src/main/assets/pie_openvpn.armeabi-v7a"/>
+    </issue>
+
+    <issue
+        id="UnsafeNativeCodeLocation"
+        message="Embedding non-shared library native executables into applications should be avoided when possible, as there is an increased risk that the executables could be tampered with after installation. Instead, native code should be placed in a shared library, and the features of the development environment should be used to place the shared library in the lib directory of the compiled APK.">
+        <location
+            file="src/main/assets/pie_openvpn.x86"/>
+    </issue>
+
+    <issue
+        id="UnsafeNativeCodeLocation"
+        message="Embedding non-shared library native executables into applications should be avoided when possible, as there is an increased risk that the executables could be tampered with after installation. Instead, native code should be placed in a shared library, and the features of the development environment should be used to place the shared library in the lib directory of the compiled APK.">
+        <location
+            file="src/main/assets/pie_openvpn.x86_64"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 15"
+        errorLine1="@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/api/ExternalOpenVPNService.java"
+            line="48"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 16"
+        errorLine1="        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/OpenVPNService.java"
+            line="355"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 16"
+        errorLine1="    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/OpenVPNService.java"
+            line="439"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 16"
+        errorLine1="        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/OpenVPNService.java"
+            line="1451"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 16"
+        errorLine1="                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/OpenVPNStatusService.java"
+            line="104"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 15"
+        errorLine1="    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/OpenVpnApi.java"
+            line="22"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is never &lt; 16"
+        errorLine1="        if ((Build.VERSION.SDK_INT &lt; VERSION_CODE_JELLY_BEAN)"
+        errorLine2="             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/PRNGFixes.java"
+            line="69"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 16"
+        errorLine1="        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/VPNLaunchHelper.java"
+            line="63"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        message="Do not place Android context classes in static fields (static reference to `OrbotHelper` which has field `mContext` pointing to `Context`); this is a memory leak"
+        errorLine1="    private static OrbotHelper mInstance;"
+        errorLine2="            ~~~~~~">
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/OrbotHelper.java"
+            line="65"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MergeRootFrame"
+        message="This `&lt;FrameLayout>` can be replaced with a `&lt;merge>` tag"
+        errorLine1="&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/layout/launchvpn.xml"
+            line="7"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="TypographyDashes"
+        message="Replace &quot;--&quot; with an &quot;em dash&quot; character (—, &amp;#8212;) ?"
+        errorLine1="        &lt;item>Encryption (--tls-crypt)&lt;/item>"
+        errorLine2="              ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/arrays.xml"
+            line="24"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="TypographyDashes"
+        message="Replace &quot;--&quot; with an &quot;em dash&quot; character (—, &amp;#8212;) ?"
+        errorLine1="    &lt;string name=&quot;check_remote_tlscert&quot;>Checks whether the server uses a certificate with TLS Server extensions (--remote-cert-tls server)&lt;/string>"
+        errorLine2="                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="65"
+            column="41"/>
+    </issue>
+
+    <issue
+        id="IconColors"
+        message="Notification icons must be entirely white">
+        <location
+            file="src/main/res/drawable/ic_notification.png"/>
+        <location
+            file="src/main/java/de/blinkt/openvpn/core/OpenVPNService.java"
+            line="331"
+            column="31"
+            message="Icon used in notification here"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_notification.png` in densityless folder">
+        <location
+            file="src/main/res/drawable/ic_notification.png"/>
+    </issue>
+
+    <issue
+        id="IconDensities"
+        message="Missing the following drawables in `drawable-xxhdpi`: ic_menu_archive.png, vpn_item_settings.png">
+        <location
+            file="src/main/res/drawable-xxhdpi"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="    &lt;EditText"
+        errorLine2="     ~~~~~~~~">
+        <location
+            file="src/main/res/layout/import_as_config.xml"
+            line="14"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="    &lt;EditText"
+        errorLine2="     ~~~~~~~~">
+        <location
+            file="src/main/res/layout/import_as_config.xml"
+            line="25"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="    &lt;EditText"
+        errorLine2="     ~~~~~~~~">
+        <location
+            file="src/main/res/layout/import_as_config.xml"
+            line="36"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="    &lt;EditText"
+        errorLine2="     ~~~~~~~~">
+        <location
+            file="src/main/res/layout/userpass.xml"
+            line="13"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="    &lt;EditText"
+        errorLine2="     ~~~~~~~~">
+        <location
+            file="src/main/res/layout/userpass.xml"
+            line="23"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="RtlHardcoded"
+        message="Consider adding `android:paddingEnd=&quot;5dp&quot;` to better support right-to-left layouts"
+        errorLine1="                    android:paddingRight=&quot;5dp&quot;/>"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/api_confirm.xml"
+            line="37"
+            column="21"/>
+    </issue>
+
+</issues>
