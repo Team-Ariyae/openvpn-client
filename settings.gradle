@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "OpenVpn Client"
+rootProject.name = "openvpn-client"
 include ':openvpn'

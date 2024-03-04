@@ -1448,8 +1448,8 @@ public class OpenVPNService extends VpnService implements StateListener, Callbac
 
 
         // Try to set the priority available since API 16 (Jellybean)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            jbNotificationExtras(PRIORITY_MAX, nbuilder);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        jbNotificationExtras(PRIORITY_MAX, nbuilder);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             lpNotificationExtras(nbuilder, Notification.CATEGORY_STATUS);
@@ -1469,10 +1469,10 @@ public class OpenVPNService extends VpnService implements StateListener, Callbac
     }
 
     //sending message to main activity
-    private void sendMessage(String state) {
+    private void sendMessage(String stateMessage) {
         Intent intent = new Intent("connectionState");
-        intent.putExtra("state", state);
-        this.state = state;
+        intent.putExtra("state", stateMessage);
+        state = stateMessage;
         LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
     }
     //sending message to main activity
