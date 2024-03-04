@@ -8,7 +8,7 @@ Add this code to top of MainApplication
 App.setOpenVpn(this, "com.example.hamrahvpn", "comexamplehamrahvpn", "Title");
 ```
 # Example
-see the example (HamrahVpn)[https://github.com/MehraB832/HamrahVpn]
+see the example --> https://github.com/MehraB832/HamrahVpn
 
 # Developer
 by MehrabSp
