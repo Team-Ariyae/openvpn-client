@@ -14,33 +14,35 @@ import androidx.annotation.Keep;
  */
 @Keep
 public class App { // extends /*com.orm.SugarApp*/ Application
-    public static String CHANNEL_ID = ""; // Example: com.example.app
-    public static String CHANNEL_ID_NAME = ""; // Example: comexampleapp
+//    public static String CHANNEL_ID = ""; // Example: com.example.app
+//    public static String CHANNEL_ID_NAME = ""; // Example: comexampleapp
     public static String ContentTitle = "OpenVpn"; // OpenVpn (Show in notif title)
 
     static NotificationManager manager;
 
+    @Keep
     public static void setOpenVpn(Context context, String channelID, String channelIDName, String contentTitle) {
-        createNotificationChannel(context);
 
         if (contentTitle.isEmpty() || channelID.isEmpty() || channelIDName.isEmpty()) {
             throw new RuntimeException("OpenVPN Configuration must be have params");
         }
+        createNotificationChannel(context, channelID, channelIDName);
+
         ContentTitle = contentTitle;
-        CHANNEL_ID = channelID;
-        CHANNEL_ID_NAME = channelIDName;
+//        CHANNEL_ID = channelID;
+//        CHANNEL_ID_NAME = channelIDName;
 
         PRNGFixes.apply();
         StatusListener mStatus = new StatusListener();
         mStatus.init(context);
     }
 
-    private static void createNotificationChannel(Context context) {
+    private static void createNotificationChannel(Context context, String channelID, String channelIDName) {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 NotificationChannel serviceChannel = new NotificationChannel(
-                        CHANNEL_ID,
-                        CHANNEL_ID_NAME,
+                        channelID,
+                        channelIDName,
                         NotificationManager.IMPORTANCE_LOW
                 );
 
