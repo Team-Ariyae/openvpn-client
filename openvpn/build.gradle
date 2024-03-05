@@ -61,7 +61,7 @@ afterEvaluate {
 
                 groupId = 'com.github.mehrab832'
                 artifactId = 'openvpn-client'
-                version = "0.1.2"
+                version = "0.1.3"
             }
         }
     }
