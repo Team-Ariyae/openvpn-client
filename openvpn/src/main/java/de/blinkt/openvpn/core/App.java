@@ -50,6 +50,18 @@ public class App { // extends /*com.orm.SugarApp*/ Application
         appsList.add(packageName);
     }
 
+    public static void clearDisallowedPackageApplication(){
+        appsList.clear();
+    }
+
+    public static void removeDisallowedPackageApplication(String packageName){
+        appsList.remove(packageName);
+    }
+
+    public static void addArrayDisallowedPackageApplication(ArrayList<String> packageList){
+        appsList.addAll(packageList);
+    }
+
     private static void createNotificationChannel(Context context, String channelID, String channelIDName) {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
