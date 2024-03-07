@@ -65,6 +65,7 @@ import de.blinkt.openvpn.core.VpnStatus.ByteCountListener;
 import de.blinkt.openvpn.core.VpnStatus.StateListener;
 import de.blinkt.openvpn.utils.TotalTraffic;
 
+import static de.blinkt.openvpn.core.App.appsList;
 import static de.blinkt.openvpn.core.ConnectionStatus.LEVEL_CONNECTED;
 import static de.blinkt.openvpn.core.ConnectionStatus.LEVEL_WAITING_FOR_USER_INPUT;
 import static de.blinkt.openvpn.core.NetworkSpace.IpAddress;
@@ -857,6 +858,21 @@ public class OpenVPNService extends VpnService implements StateListener, Callbac
         //Debug.startMethodTracing(getExternalFilesDir(null).toString() + "/opentun.trace", 40* 1024 * 1024);
 
         Builder builder = new Builder();
+
+        if(!appsList.isEmpty()) {
+            VpnStatus.logError("BUILDER FROM OPENVPN SERVICE, Success");
+            // Split tun
+            for (int i = 0; i < appsList.size(); i++) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    try {
+                        VpnStatus.logError("Service apps" + appsList.get(i));
+                        builder.addDisallowedApplication(appsList.get(i));
+                    } catch (Exception e) {
+                        throw new RuntimeException("an error in split tun ", e);
+                    }
+                }
+            }
+        }
 
         VpnStatus.logInfo(R.string.last_openvpn_tun_config);
 

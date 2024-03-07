@@ -8,18 +8,25 @@ import android.util.Log;
 
 import androidx.annotation.Keep;
 
+import java.util.ArrayList;
+
 /**
  * MehrabSp
  * This is init file for OpenVpn client
  */
 @Keep
 public class App { // extends /*com.orm.SugarApp*/ Application
-//    public static String CHANNEL_ID = ""; // Example: com.example.app
-//    public static String CHANNEL_ID_NAME = ""; // Example: comexampleapp
-    public static String ContentTitle = "OpenVpn"; // OpenVpn (Show in notif title)
-
+    public static String ContentTitle = "OpenVpn"; // Notif title
     static NotificationManager manager;
+    static ArrayList<String> appsList = new ArrayList<>(); // SplitTunnel Apps
 
+    /**
+     * by MehrabSp
+     * @param context
+     * @param channelID Example: com.example.app
+     * @param channelIDName Example: comexampleapp
+     * @param contentTitle Example: iNetVpn
+     */
     @Keep
     public static void setOpenVpn(Context context, String channelID, String channelIDName, String contentTitle) {
 
@@ -27,14 +34,20 @@ public class App { // extends /*com.orm.SugarApp*/ Application
             throw new RuntimeException("OpenVPN Configuration must be have params");
         }
         createNotificationChannel(context, channelID, channelIDName);
-
         ContentTitle = contentTitle;
-//        CHANNEL_ID = channelID;
-//        CHANNEL_ID_NAME = channelIDName;
 
         PRNGFixes.apply();
         StatusListener mStatus = new StatusListener();
         mStatus.init(context);
+    }
+
+    /**
+     * by MehrabSp
+     * @param packageName Example: com.android.chrome
+     */
+    @Keep
+    public static void addDisallowedPackageApplication(String packageName){
+        appsList.add(packageName);
     }
 
     private static void createNotificationChannel(Context context, String channelID, String channelIDName) {
