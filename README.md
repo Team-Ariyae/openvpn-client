@@ -7,8 +7,6 @@ Add this code to top of MainApplication
 ```
 App.setOpenVpn(this, "com.example.inetvpn", "comexampleinetvpn", "Title");
 ```
-# Example
-see the example --> https://github.com/MehraB832/inetvpn
 
 # Developer
 by MehrabSp
