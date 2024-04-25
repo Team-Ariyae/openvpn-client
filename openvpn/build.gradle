@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.androidLibrary)
-    id 'maven-publish'
+    id 'org.jetbrains.kotlin.android' // require for out of module (duplicate classes)
 }
 
 android {
@@ -28,8 +28,6 @@ android {
     }
 
     buildFeatures {
-        viewBinding true
-        dataBinding true
         buildConfig true
         aidl true
     }
@@ -45,24 +43,14 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+   // implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation libs.localbroadcastmanager
     implementation libs.appcompat
+
+    // saving
+    implementation libs.mmkv.static
+
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.findByName('release')
-
-                groupId = 'com.github.mehrab832'
-                artifactId = 'openvpn-client'
-                version = "0.1.4"
-            }
-        }
-    }
 }

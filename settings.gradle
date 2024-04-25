@@ -20,4 +20,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "openvpn-client"
-include ':openvpn'
+// :app --> for test (application)
+include ':openvpn', ':app'

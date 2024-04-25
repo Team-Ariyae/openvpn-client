@@ -19,26 +19,39 @@ public class App { // extends /*com.orm.SugarApp*/ Application
     public static String ContentTitle = "OpenVpn"; // Notif title
     static NotificationManager manager;
     static ArrayList<String> appsList = new ArrayList<>(); // SplitTunnel Apps
+    public static Context contextApplication = null;
+    public static Boolean isShowToast = false;
+
+    public static void setOpenVpn(Context context, String channelID, String channelIDName) {
+        setOpenVpn(context, channelID, channelIDName, ContentTitle, false);
+    }
 
     /**
      * by MehrabSp
-     * @param context
+     * @param context ApplicationContext
      * @param channelID Example: com.example.app
      * @param channelIDName Example: comexampleapp
      * @param contentTitle Example: iNetVpn
      */
-    @Keep
-    public static void setOpenVpn(Context context, String channelID, String channelIDName, String contentTitle) {
+    public static void setOpenVpn(Context context, String channelID, String channelIDName,
+                                  String contentTitle, Boolean showToast) {
 
         if (contentTitle.isEmpty() || channelID.isEmpty() || channelIDName.isEmpty()) {
             throw new RuntimeException("OpenVPN Configuration must be have params");
         }
-        createNotificationChannel(context, channelID, channelIDName);
-        ContentTitle = contentTitle;
+        try{
+            createNotificationChannel(context, channelID, channelIDName);
+            ContentTitle = contentTitle;
 
-        PRNGFixes.apply();
-        StatusListener mStatus = new StatusListener();
-        mStatus.init(context);
+            PRNGFixes.apply();
+            StatusListener mStatus = new StatusListener();
+            mStatus.init(context);
+            contextApplication = context;
+
+            isShowToast = showToast;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
