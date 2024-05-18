@@ -34,10 +34,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import de.blinkt.openvpn.OpenVpnApi;
-import de.blinkt.openvpn.core.OpenVPNService;
-import de.blinkt.openvpn.core.OpenVPNThread;
-import de.blinkt.openvpn.core.VpnStatus;
+import sp.de.blinkt.openvpn.OpenVpnApi;
+import sp.de.blinkt.openvpn.core.OpenVPNService;
+import sp.de.blinkt.openvpn.core.OpenVPNThread;
+import sp.de.blinkt.openvpn.core.VpnStatus;
 
 import static android.app.Activity.RESULT_OK;
 

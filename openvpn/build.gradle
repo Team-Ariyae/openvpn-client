@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'de.blinkt.openvpn'
+    namespace 'sp.de.blinkt.openvpn'
     compileSdk 33
 
     defaultConfig {
