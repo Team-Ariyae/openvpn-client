@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace 'de.blinkt.openvpn'
-    compileSdk 34
+    compileSdk 33
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 34
+        targetSdkVersion 33
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
